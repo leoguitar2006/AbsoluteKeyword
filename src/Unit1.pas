@@ -20,6 +20,7 @@ type
     procedure FormCreate(Sender: TObject);
   private
     procedure SendTextToLabel(Sender: TObject);
+    procedure SendTextToLabelWithoutAbsolut(Sender: TObject);
     { Private declarations }
   public
     { Public declarations }
@@ -41,9 +42,9 @@ var
 begin
   SelectedColor := ColorBox1.Selected;
 
-  BytesOfNewColor[0] := BytesOfSelectedColor[Random(3)];
-  BytesOfNewColor[1] := BytesOfSelectedColor[Random(3)];
-  BytesOfNewColor[2] := BytesOfSelectedColor[Random(3)];
+  BytesOfNewColor[0] := BytesOfSelectedColor[Random(2)];
+  BytesOfNewColor[1] := BytesOfSelectedColor[Random(2)];
+  BytesOfNewColor[2] := BytesOfSelectedColor[Random(2)];
   BytesOfNewColor[3] := 0;  // Alpha Byte (useless on TColor)
 
   Panel1.Color := NewColor;
@@ -76,6 +77,27 @@ begin
     MyMemo.Lines.Text := AnsiUpperCase(MyMemo.Lines.Text);
     MyMemo.SelStart := CursorPos;
     Label1.Caption := MyMemo.Lines.Text;
+  end;
+end;
+
+procedure TForm1.SendTextToLabelWithoutAbsolut(Sender: TObject);
+var
+  CursorPos: Integer;
+begin
+  Label1.Caption := EmptyStr;
+  if (Sender is TEdit) then
+  begin
+    CursorPos := (Sender As TEdit).SelStart;
+    (Sender As TEdit).Text := AnsiUpperCase((Sender As TEdit).Text);
+    (Sender As TEdit).SelStart := CursorPos;
+    Label1.Caption := (Sender As TEdit).Text;
+  end
+  else if (Sender is TMemo) then
+  begin
+    CursorPos := (Sender As TMemo).SelStart;
+    (Sender As TMemo).Lines.Text := AnsiUpperCase((Sender As TMemo).Lines.Text);
+    (Sender As TMemo).SelStart := CursorPos;
+    Label1.Caption := (Sender As TMemo).Lines.Text;
   end;
 end;
 

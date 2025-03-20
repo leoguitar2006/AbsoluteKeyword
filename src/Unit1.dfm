@@ -3,7 +3,7 @@ object Form1: TForm1
   Top = 0
   Caption = 'Absolute Keyword'
   ClientHeight = 363
-  ClientWidth = 757
+  ClientWidth = 307
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
