@@ -42,9 +42,9 @@ var
 begin
   SelectedColor := ColorBox1.Selected;
 
-  BytesOfNewColor[0] := BytesOfSelectedColor[Random(2)];
-  BytesOfNewColor[1] := BytesOfSelectedColor[Random(2)];
-  BytesOfNewColor[2] := BytesOfSelectedColor[Random(2)];
+  BytesOfNewColor[0] := BytesOfSelectedColor[Random(3)];
+  BytesOfNewColor[1] := BytesOfSelectedColor[Random(3)];
+  BytesOfNewColor[2] := BytesOfSelectedColor[Random(3)];
   BytesOfNewColor[3] := 0;  // Alpha Byte (useless on TColor)
 
   Panel1.Color := NewColor;
